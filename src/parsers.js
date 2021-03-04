@@ -675,7 +675,7 @@ exports.parseAlbumPage = context => {
             result.tracks.push({
                 title: albumTrack[i].title,
                 videoId: albumTrack[i].videoId,
-                artistNames: albumTrack[i].artistNames,
+                artist: albumTrack[i].artistNames,
                 duration: parseInt(albumTrack[i].lengthMs),
                 thumbnails: utils.fv(albumTrack[i], 'thumbnailDetails:thumbnails')
             })
@@ -684,7 +684,7 @@ exports.parseAlbumPage = context => {
         result.tracks.push({
             title: albumTrack.title,
             videoId: albumTrack.videoId,
-            artistNames: albumTrack.artistNames,
+            artist: albumTrack.artistNames,
             duration: parseInt(albumTrack.lengthMs),
             thumbnails: utils.fv(albumTrack, 'thumbnailDetails:thumbnails')
         })
