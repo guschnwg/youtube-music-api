@@ -4,8 +4,8 @@ exports.fv = (input, query, justOne = false) => {
     const iterate = (x, y) => {
         var r = []
 
-        x.hasOwnProperty(y) && r.push(x[y]);
-        if (justOne && x.hasOwnProperty(y)) {
+        Object.prototype.hasOwnProperty.call(x, y) && r.push(x[y]);
+        if (justOne && Object.prototype.hasOwnProperty.call(x, y)) {
             return r.shift()
         }
 
@@ -126,5 +126,12 @@ exports.buildEndpointContext = (typeName, browseId) => {
             }
         },
         'browseId': browseId
+    }
+}
+
+exports.buildSongsEnpointContext = (browseId) => {
+    return {
+        'browseId': browseId,
+        params: "ggMCCAI%3D"
     }
 }
