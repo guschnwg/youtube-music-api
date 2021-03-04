@@ -23,7 +23,7 @@ exports.parseSearchResult = (context) => {
                     type: _.lowerCase(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 0)),
                     videoId: utils.fv(sectionContext, 'playNavigationEndpoint:videoId'),
                     playlistId: utils.fv(sectionContext, 'playNavigationEndpoint:playlistId'),
-                    name: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
+                    title: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
                     artist: (function() {
                         var a = [],
                             c = (_.nth(utils.fv(_.nth(flexColumn, 1), 'runs'), 2))
@@ -149,7 +149,7 @@ exports.parseSongSearchResult = (context) => {
             type: 'song',
             videoId: utils.fv(sectionContext, 'playNavigationEndpoint:videoId', true),
             playlistId: utils.fv(sectionContext, 'playNavigationEndpoint:playlistId'),
-            name: utils.fv(flexColumn[0], 'runs:text', true),
+            title: utils.fv(flexColumn[0], 'runs:text', true),
             artist: (function() {
                 var a = [],
                     c = (utils.fv(flexColumn[1], 'runs'))
@@ -715,10 +715,8 @@ exports.parseNextPanel = context => {
             index: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.index'), 0),
             selected: _.nth(_.at(itemContext, 'selected'), 0),
             videoId: _.nth(_.at(itemContext, 'videoId'), 0),
-            name: _.nth(_.at(itemContext, 'name'), 0),
-            title: _.nth(_.at(itemContext, 'title'), 0),
-            author: _.nth(_.at(itemContext, 'author'), 0),
-            artist: _.nth(_.at(itemContext, 'artist'), 0),
+            name: _.nth(_.at(itemContext, 'title.runs.0.text'), 0),
+            artist: _.nth(_.at(itemContext, 'longBylineText.runs.0.text'), 0),
             playlistId: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.playlistId'), 0),
             params: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.params'), 0)
         })
