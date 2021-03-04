@@ -517,8 +517,6 @@ exports.parseSongsPage = (context) => {
       ...content.musicResponsiveListItemRenderer.playlistItemData,
       title: content.musicResponsiveListItemRenderer.flexColumns[0].musicResponsiveListItemFlexColumnRenderer.text.runs[0].text,
       artist: content.musicResponsiveListItemRenderer.flexColumns[1].musicResponsiveListItemFlexColumnRenderer.text.runs[0].text,
-      name: content.musicResponsiveListItemRenderer.flexColumns[0].musicResponsiveListItemFlexColumnRenderer.text.runs[0].text,
-      author: content.musicResponsiveListItemRenderer.flexColumns[1].musicResponsiveListItemFlexColumnRenderer.text.runs[0].text,
     }));
   
   return songs;
@@ -675,7 +673,7 @@ exports.parseAlbumPage = context => {
     if (albumTrack instanceof Array) {
         for (let i = 0; i < albumTrack.length; i++) {
             result.tracks.push({
-                name: albumTrack[i].title,
+                title: albumTrack[i].title,
                 videoId: albumTrack[i].videoId,
                 artistNames: albumTrack[i].artistNames,
                 duration: parseInt(albumTrack[i].lengthMs),
@@ -684,7 +682,7 @@ exports.parseAlbumPage = context => {
         }
     } else if (albumTrack instanceof Object) {
         result.tracks.push({
-            name: albumTrack.title,
+            title: albumTrack.title,
             videoId: albumTrack.videoId,
             artistNames: albumTrack.artistNames,
             duration: parseInt(albumTrack.lengthMs),
@@ -715,7 +713,7 @@ exports.parseNextPanel = context => {
             index: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.index'), 0),
             selected: _.nth(_.at(itemContext, 'selected'), 0),
             videoId: _.nth(_.at(itemContext, 'videoId'), 0),
-            name: _.nth(_.at(itemContext, 'title.runs.0.text'), 0),
+            title: _.nth(_.at(itemContext, 'title.runs.0.text'), 0),
             artist: _.nth(_.at(itemContext, 'longBylineText.runs.0.text'), 0),
             playlistId: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.playlistId'), 0),
             params: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.params'), 0)
