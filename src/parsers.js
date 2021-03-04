@@ -507,6 +507,23 @@ exports.parseArtistPage = context => {
     return result
 }
 
+exports.parseSongsPage = (context) => {
+  let playlistData = context.contents.singleColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents.find(
+    (item) => item["musicShelfRenderer"] !== undefined || item["musicPlaylistShelfRenderer"] !== undefined
+  );
+
+  playlistData = playlistData.musicShelfRenderer || playlistData.musicPlaylistShelfRenderer;
+  const songs = playlistData.contents.map((content) => ({
+      ...content.musicResponsiveListItemRenderer.playlistItemData,
+      title: content.musicResponsiveListItemRenderer.flexColumns[0].musicResponsiveListItemFlexColumnRenderer.text.runs[0].text,
+      artist: content.musicResponsiveListItemRenderer.flexColumns[1].musicResponsiveListItemFlexColumnRenderer.text.runs[0].text,
+      name: content.musicResponsiveListItemRenderer.flexColumns[0].musicResponsiveListItemFlexColumnRenderer.text.runs[0].text,
+      author: content.musicResponsiveListItemRenderer.flexColumns[1].musicResponsiveListItemFlexColumnRenderer.text.runs[0].text,
+    }));
+  
+  return songs;
+};
+
 exports.parsePlaylistPage = context => {
     const result = {
         title: '',
