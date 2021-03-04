@@ -715,6 +715,10 @@ exports.parseNextPanel = context => {
             index: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.index'), 0),
             selected: _.nth(_.at(itemContext, 'selected'), 0),
             videoId: _.nth(_.at(itemContext, 'videoId'), 0),
+            name: _.nth(_.at(itemContext, 'name'), 0),
+            title: _.nth(_.at(itemContext, 'title'), 0),
+            author: _.nth(_.at(itemContext, 'author'), 0),
+            artist: _.nth(_.at(itemContext, 'artist'), 0),
             playlistId: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.playlistId'), 0),
             params: _.nth(_.at(itemContext, 'navigationEndpoint.watchEndpoint.params'), 0)
         })
